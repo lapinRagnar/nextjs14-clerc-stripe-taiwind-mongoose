@@ -117,16 +117,55 @@ import { SignUp } from "@clerk/nextjs";
 
 export default function Page() {
   return <SignUp />
-}```
+}
+
+```
+
+- on ajoute : 
+
+```
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+
+```
+
+- on ajoute un layout 👍 dans (auth)
+> app/(auth)/layout.tsx
+```
+const Layout = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="flex-center min-h-screen flex-col w-full bg-stone-800 bg-dotted-pattern bg-cover bg-fixed bg-center">
+      {children}
+    </div>
+  )
+}
+
+export default Layout
+```
+
+- mettre username dans le formulaire le sign-in et le sign-up
+  
+  ![Alt text](/image-pour-readme/image2.png)
 
 
+- dans le header, ajouter le  <SignedIn> de clerk
+
+> app/components/shared/Header.tsx
+```
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
+...
+..
+<SignedIn>
+  <UserButton afterSignOutUrl="/" />
+</SignedIn>
 
 
+```
 
-
-
-
-
+=> Après ça, on peut se connecter sur localhost:3000/sign-in
+=> et tout fonctionne, Bravooooo!
 
 
 
