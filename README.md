@@ -37,6 +37,11 @@ export default withUt({
 });
 ```
 
+## 5- routes && file structure
+
+![Alt text](image-pour-readme/image.png)
+
+
 
 
 ## le tuto
