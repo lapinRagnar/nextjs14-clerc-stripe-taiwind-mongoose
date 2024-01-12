@@ -1,9 +1,41 @@
 
 
 
+# les etapes de l'installation
+## 1. next
+```
+pnpx create-next-app@latest 
+```
+puis suivre le prompt
+## 2. shadcn ui
+```
+pnpm dlx shadcn-ui@latest init
+```
+puis suivre le prompt
 
+## 3. configurer globals.css 
+(voir le code )
+## 4. configurer tailwind (tailwind.config.ts) et uploadthing pour l'upload file
+- uploadthing : upload file for nextjs easily
+https://uploadthing.com/
+command line 
+```
+pnpm add uploadthing @uploadthing/react
+```
 
+- tailwind.config.ts
+(voir le code ) et les commandes sont:
 
+> tailwind.config.ts
+```
+import { withUt } from "uploadthing/tw";
+ 
+export default withUt({
+  // Your existing Tailwind config
+  content: ["./src/**/*.{ts,tsx,mdx}"],
+  ...
+});
+```
 
 
 
