@@ -41,6 +41,82 @@ export default withUt({
 
 ![Alt text](image-pour-readme/image.png)
 
+## 6- Header
+
+#### a- cree un compte clerk sur leur site
+- copier les variables d'environnement dans
+> .env.local
+```
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=[votre clé]
+CLERK_SECRET_KEY=[votre clé]
+```
+#### b- install clerk
+```
+pnpm add @clerk/nextjs
+```
+
+#### c- wrap ton app avec le <ClerkProvider>
+> app\(root)\layout.tsx
+```
+import { ClerkProvider } from '@clerk/nextjs'
+import './globals.css'
+ 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <ClerkProvider>
+      <html lang="en">
+        <body>{children}</body>
+      </html>
+    </ClerkProvider>
+  )
+}
+```
+
+#### d- le middleware 
+
+> app/middleware.ts
+```
+import { authMiddleware } from "@clerk/nextjs";
+ 
+// This example protects all routes including api/trpc routes
+// Please edit this to allow other routes to be public as needed.
+// See https://clerk.com/docs/references/nextjs/auth-middleware for more information about configuring your Middleware
+export default authMiddleware({});
+ 
+export const config = {
+  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+};
+
+
+```
+
+quand on se connecte sur localhost:3000, on est redirige vers /sign-in maintenant
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
