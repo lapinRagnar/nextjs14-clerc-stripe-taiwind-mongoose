@@ -96,8 +96,28 @@ export const config = {
 
 quand on se connecte sur localhost:3000, on est redirige vers /sign-in maintenant
 
+## 6 - suite header
+- ajouter le bouton <SignedOut> de clerk
+- on cree app/(auth)/sign-in/[[...sign-in]]/page.tsx
 
+> app/(auth)/sign-in/[[...sign-in]]/page.tsx
+```
+import { SignIn } from "@clerk/nextjs";
 
+export default function Page() {
+  return <SignIn />
+}
+```
+
+- on cree app\(auth)\sign-up\[[...sign-up]]\page.tsx
+
+> app/(auth)/sign-up/[[...sign-up]]/page.tsx
+```
+import { SignUp } from "@clerk/nextjs";
+
+export default function Page() {
+  return <SignUp />
+}```
 
 
 
